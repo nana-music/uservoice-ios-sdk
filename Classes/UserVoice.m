@@ -37,6 +37,12 @@ static NSBundle *userVoiceBundle;
         }
     }
     if (!userVoiceBundle) {
+        NSURL *url = [[NSBundle mainBundle] URLForResource:@"UserVoice" withExtension:@"bundle" subdirectory:@"Frameworks/uservoice_iphone_sdk.framework"];
+        if (url) {
+            userVoiceBundle = [NSBundle bundleWithURL:url];
+        }
+    }
+    if (!userVoiceBundle) {
         userVoiceBundle = [NSBundle mainBundle];
     }
     return userVoiceBundle;
